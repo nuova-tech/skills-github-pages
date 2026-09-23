@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches-ignore:
+      - main
+      - my-pages
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run unit tests
+        run: npm test
+      - name: Syntax-check all modules
+        run: |
+          for f in $(find assets/js tests -name '*.js' -o -name '*.mjs'); do
+            node --check "$f"
+          done
+          echo "All modules parsed cleanly"

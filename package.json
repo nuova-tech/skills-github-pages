@@ -1,0 +1,14 @@
+{
+  "name": "ai-fitness-coach",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI-powered computer-vision fitness app (MediaPipe Pose + TensorFlow.js) that runs entirely client-side and deploys to GitHub Pages.",
+  "type": "module",
+  "scripts": {
+    "test": "node tests/run.mjs",
+    "serve": "python3 -m http.server 8080",
+    "typecheck": "tsc --allowJs --checkJs --noEmit --target es2020 --moduleResolution node --module es2020 assets/js/app.js || true"
+  },
+  "keywords": ["fitness", "mediapipe", "pose-estimation", "tensorflow", "pwa", "computer-vision"],
+  "license": "MIT"
+}
