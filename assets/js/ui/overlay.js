@@ -8,10 +8,11 @@
 
 import { POSE_CONNECTIONS, LM, angleDeg } from '../pose/landmarks.js';
 
-const GOOD = '#22d3ee';
-const BONE = '#e2e8f0';
-const WARN = '#f43f5e';
-const JOINT = '#a78bfa';
+// HomeCourt-style tracking: bright neon-orange bones with a glow, white joints.
+const GOOD = '#ff6a00';
+const BONE = '#ff8a3c';
+const WARN = '#ff4d4d';
+const JOINT = '#ffffff';
 
 export class OverlayRenderer {
   /** @param {HTMLCanvasElement} canvas */
@@ -51,6 +52,8 @@ export class OverlayRenderer {
     if (this.showSkeleton) {
       ctx.lineWidth = Math.max(3, W * 0.005);
       ctx.lineCap = 'round';
+      ctx.shadowColor = 'rgba(255,106,0,0.85)'; // neon glow around the tracking lines
+      ctx.shadowBlur = Math.max(6, W * 0.012);
       for (const [a, b] of POSE_CONNECTIONS) {
         const pa = lm[a], pb = lm[b];
         if (!pa || !pb || pa.visibility < 0.4 || pb.visibility < 0.4) continue;
@@ -60,6 +63,7 @@ export class OverlayRenderer {
         ctx.lineTo(px(pb.x), py(pb.y));
         ctx.stroke();
       }
+      ctx.shadowBlur = 0;
       for (let i = 0; i < lm.length; i++) {
         const p = lm[i];
         if (!p || p.visibility < 0.4) continue;
@@ -82,7 +86,7 @@ export class OverlayRenderer {
         ctx.lineWidth = Math.max(2, W * 0.004);
         for (let i = 1; i < this.trail.length; i++) {
           const a = this.trail[i - 1], b = this.trail[i];
-          ctx.strokeStyle = `rgba(34,211,238,${i / this.trail.length})`;
+          ctx.strokeStyle = `rgba(255,106,0,${i / this.trail.length})`;
           ctx.beginPath();
           ctx.moveTo(px(a.x), py(a.y));
           ctx.lineTo(px(b.x), py(b.y));

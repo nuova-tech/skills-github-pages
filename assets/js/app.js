@@ -124,9 +124,9 @@ class App {
       const minutes = Math.round(today.reduce((s, w) => s + w.durationMs, 0) / 60000);
       const cals = Math.round(today.reduce((s, w) => s + w.calories, 0));
       charts.activityRings(ringsEl, [
-        { value: reps, goal: 50, color: '#22d3ee' },
-        { value: minutes, goal: 20, color: '#a78bfa' },
-        { value: cals, goal: 200, color: '#f43f5e' },
+        { value: reps, goal: 50, color: '#ff6a00' },
+        { value: minutes, goal: 20, color: '#ff9d3c' },
+        { value: cals, goal: 200, color: '#35b8ff' },
       ]);
     }
     const list = document.getElementById('missionList');
@@ -339,8 +339,8 @@ class App {
     const repsCanvas = /** @type {HTMLCanvasElement} */ (document.getElementById('chartReps'));
     const formCanvas = /** @type {HTMLCanvasElement} */ (document.getElementById('chartForm'));
     const exCanvas = /** @type {HTMLCanvasElement} */ (document.getElementById('chartByEx'));
-    if (repsCanvas) charts.lineChart(repsCanvas, w.map((x) => x.totalReps), { color: '#22d3ee' });
-    if (formCanvas) charts.lineChart(formCanvas, w.map((x) => x.avgFormScore), { color: '#a78bfa' });
+    if (repsCanvas) charts.lineChart(repsCanvas, w.map((x) => x.totalReps), { color: '#ff6a00' });
+    if (formCanvas) charts.lineChart(formCanvas, w.map((x) => x.avgFormScore), { color: '#ff9d3c' });
     if (exCanvas) {
       /** @type {Record<string, number>} */ const byEx = {};
       for (const wk of this.store.workouts) for (const e of wk.exercises) byEx[e.name] = (byEx[e.name] || 0) + e.reps;

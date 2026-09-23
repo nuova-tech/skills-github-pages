@@ -59,7 +59,7 @@ export function confetti(opts = {}) {
   canvas.width = innerWidth; canvas.height = innerHeight;
   document.body.appendChild(canvas);
   const c = /** @type {CanvasRenderingContext2D} */ (canvas.getContext('2d'));
-  const colors = ['#22d3ee', '#a78bfa', '#fbbf24', '#f43f5e', '#34d399'];
+  const colors = ['#ff6a00', '#ff9d3c', '#ffc93c', '#35b8ff', '#c7ff3c'];
   const parts = Array.from({ length: count }, () => ({
     x: innerWidth / 2 + (Math.random() - 0.5) * 120,
     y: innerHeight / 2,

@@ -4,10 +4,10 @@
  * @module ui/charts
  */
 
-const ACCENT = '#22d3ee';
-const ACCENT2 = '#a78bfa';
-const GRID = 'rgba(148,163,184,0.15)';
-const TEXT = '#94a3b8';
+const ACCENT = '#ff6a00';
+const ACCENT2 = '#ff9d3c';
+const GRID = 'rgba(255,255,255,0.08)';
+const TEXT = '#9a9aa4';
 
 /** @param {HTMLCanvasElement} canvas */
 function setup(canvas) {
